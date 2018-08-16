@@ -21,22 +21,27 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		30BB2A4921255F2A00AEFBA2 /* VirtualCPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A4821255F2A00AEFBA2 /* VirtualCPU.swift */; };
+		30BB2A4D21255FEB00AEFBA2 /* OperationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A4C21255FEB00AEFBA2 /* OperationFactory.swift */; };
+		30BB2A5521256C3200AEFBA2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
+		30BB2A5721256CCE00AEFBA2 /* OperationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5621256CCE00AEFBA2 /* OperationCode.swift */; };
+		30BB2A5A21256F3800AEFBA2 /* ADD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5921256F3800AEFBA2 /* ADD.swift */; };
+		30BB2A5C21258C3900AEFBA2 /* ProgramMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5B21258C3900AEFBA2 /* ProgramMemory.swift */; };
 		40B61207212568240096BB1A /* FixedWidthInteger+Bitmask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */; };
-		OBJ_22 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
 		OBJ_41 /* swift_avrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* swift_avrTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		40B6120321255D680096BB1A /* PBXContainerItemProxy */ = {
+		30BB2A4621255ED100AEFBA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "swift-avr::swift-avr";
 			remoteInfo = "swift-avr";
 		};
-		40B6120421255D6A0096BB1A /* PBXContainerItemProxy */ = {
+		30BB2A4721255ED300AEFBA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -46,6 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30BB2A4821255F2A00AEFBA2 /* VirtualCPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualCPU.swift; sourceTree = "<group>"; };
+		30BB2A4C21255FEB00AEFBA2 /* OperationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationFactory.swift; sourceTree = "<group>"; };
+		30BB2A5621256CCE00AEFBA2 /* OperationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCode.swift; sourceTree = "<group>"; };
+		30BB2A5921256F3800AEFBA2 /* ADD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADD.swift; sourceTree = "<group>"; };
+		30BB2A5B21258C3900AEFBA2 /* ProgramMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramMemory.swift; sourceTree = "<group>"; };
 		40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Bitmask.swift"; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* swift_avrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_avrTests.swift; sourceTree = "<group>"; };
@@ -73,6 +83,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30BB2A4E21255FF200AEFBA2 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				30BB2A5821256F2C00AEFBA2 /* OpCodes */,
+				40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */,
+				30BB2A4C21255FEB00AEFBA2 /* OperationFactory.swift */,
+				30BB2A5621256CCE00AEFBA2 /* OperationCode.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		30BB2A5821256F2C00AEFBA2 /* OpCodes */ = {
+			isa = PBXGroup;
+			children = (
+				30BB2A5921256F3800AEFBA2 /* ADD.swift */,
+			);
+			path = OpCodes;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +129,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -108,7 +137,6 @@
 				OBJ_10 /* Tests */,
 				OBJ_14 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -122,8 +150,10 @@
 		OBJ_8 /* swift-avr */ = {
 			isa = PBXGroup;
 			children = (
+				30BB2A4821255F2A00AEFBA2 /* VirtualCPU.swift */,
+				30BB2A5B21258C3900AEFBA2 /* ProgramMemory.swift */,
+				30BB2A4E21255FF200AEFBA2 /* Operations */,
 				OBJ_9 /* main.swift */,
-				40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */,
 			);
 			name = "swift-avr";
 			path = "Sources/swift-avr";
@@ -195,7 +225,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,8 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				30BB2A5521256C3200AEFBA2 /* main.swift in Sources */,
 				40B61207212568240096BB1A /* FixedWidthInteger+Bitmask.swift in Sources */,
-				OBJ_22 /* main.swift in Sources */,
+				30BB2A4921255F2A00AEFBA2 /* VirtualCPU.swift in Sources */,
+				30BB2A5C21258C3900AEFBA2 /* ProgramMemory.swift in Sources */,
+				30BB2A5A21256F3800AEFBA2 /* ADD.swift in Sources */,
+				30BB2A4D21255FEB00AEFBA2 /* OperationFactory.swift in Sources */,
+				30BB2A5721256CCE00AEFBA2 /* OperationCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,12 +297,12 @@
 		OBJ_34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-avr::swift-avrTests" /* swift-avrTests */;
-			targetProxy = 40B6120421255D6A0096BB1A /* PBXContainerItemProxy */;
+			targetProxy = 30BB2A4721255ED300AEFBA2 /* PBXContainerItemProxy */;
 		};
 		OBJ_43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "swift-avr::swift-avr" /* swift-avr */;
-			targetProxy = 40B6120321255D680096BB1A /* PBXContainerItemProxy */;
+			targetProxy = 30BB2A4621255ED100AEFBA2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
