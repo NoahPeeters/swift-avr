@@ -22,12 +22,35 @@ public enum StatusRegister: Int {
     case xorSignedTest = 255
 }
 
-public class VirtualCPU {
-    public var programCounter = 0
-    private var programMemory: ProgramMemory
+public protocol VirtualCPUDelegate: class {
+    func virtualCPU(didExecuteInstruction: AssemblyInstruction, atAddress: Int)
+}
 
-    public init(memory: ProgramMemory) {
-        self.programMemory = memory
+public class VirtualCPU {
+    public weak var delegate: VirtualCPUDelegate?
+
+    public var programCounter = 0
+    private let memory: ProgramMemory
+    private let operationFactory: OperationFactory
+
+    public init(memory: ProgramMemory, operationFactory: OperationFactory) {
+        self.memory = memory
+        self.operationFactory = operationFactory
+    }
+
+    public func cycle() -> Bool {
+        let operationAddress = programCounter
+        let operation = operationFactory.scheduleExecution(inMemory: memory, atLocation: operationAddress)
+
+        if let (size, executor, assemblyFetcher) = operation {
+            programCounter += size
+            executor(self)
+            delegate?.virtualCPU(didExecuteInstruction: assemblyFetcher(), atAddress: operationAddress)
+            return true
+        } else {
+            print("No valid operation found!")
+            return false
+        }
     }
 
     // MARK: Registers

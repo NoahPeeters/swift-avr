@@ -27,6 +27,10 @@
 		30BB2A5721256CCE00AEFBA2 /* OperationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5621256CCE00AEFBA2 /* OperationCode.swift */; };
 		30BB2A5A21256F3800AEFBA2 /* ADD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5921256F3800AEFBA2 /* ADD.swift */; };
 		30BB2A5C21258C3900AEFBA2 /* ProgramMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5B21258C3900AEFBA2 /* ProgramMemory.swift */; };
+		30BB2A5E2125BB4D00AEFBA2 /* JMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5D2125BB4D00AEFBA2 /* JMP.swift */; };
+		30BB2A602125BC0A00AEFBA2 /* RJMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A5F2125BC0A00AEFBA2 /* RJMP.swift */; };
+		30BB2A622125C4FA00AEFBA2 /* FixedWidthInteger+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A612125C4FA00AEFBA2 /* FixedWidthInteger+Hex.swift */; };
+		30BB2A652125CE3400AEFBA2 /* AssemblyInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB2A642125CE3400AEFBA2 /* AssemblyInstruction.swift */; };
 		40B61207212568240096BB1A /* FixedWidthInteger+Bitmask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
@@ -56,6 +60,10 @@
 		30BB2A5621256CCE00AEFBA2 /* OperationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCode.swift; sourceTree = "<group>"; };
 		30BB2A5921256F3800AEFBA2 /* ADD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADD.swift; sourceTree = "<group>"; };
 		30BB2A5B21258C3900AEFBA2 /* ProgramMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramMemory.swift; sourceTree = "<group>"; };
+		30BB2A5D2125BB4D00AEFBA2 /* JMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMP.swift; sourceTree = "<group>"; };
+		30BB2A5F2125BC0A00AEFBA2 /* RJMP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RJMP.swift; sourceTree = "<group>"; };
+		30BB2A612125C4FA00AEFBA2 /* FixedWidthInteger+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Hex.swift"; sourceTree = "<group>"; };
+		30BB2A642125CE3400AEFBA2 /* AssemblyInstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyInstruction.swift; sourceTree = "<group>"; };
 		40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Bitmask.swift"; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* swift_avrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_avrTests.swift; sourceTree = "<group>"; };
@@ -87,9 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				30BB2A5821256F2C00AEFBA2 /* OpCodes */,
-				40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */,
 				30BB2A4C21255FEB00AEFBA2 /* OperationFactory.swift */,
 				30BB2A5621256CCE00AEFBA2 /* OperationCode.swift */,
+				30BB2A642125CE3400AEFBA2 /* AssemblyInstruction.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -98,8 +106,19 @@
 			isa = PBXGroup;
 			children = (
 				30BB2A5921256F3800AEFBA2 /* ADD.swift */,
+				30BB2A5D2125BB4D00AEFBA2 /* JMP.swift */,
+				30BB2A5F2125BC0A00AEFBA2 /* RJMP.swift */,
 			);
 			path = OpCodes;
+			sourceTree = "<group>";
+		};
+		30BB2A632125C51700AEFBA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				30BB2A612125C4FA00AEFBA2 /* FixedWidthInteger+Hex.swift */,
+				40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		OBJ_10 /* Tests */ = {
@@ -152,8 +171,9 @@
 			children = (
 				30BB2A4821255F2A00AEFBA2 /* VirtualCPU.swift */,
 				30BB2A5B21258C3900AEFBA2 /* ProgramMemory.swift */,
-				30BB2A4E21255FF200AEFBA2 /* Operations */,
 				OBJ_9 /* main.swift */,
+				30BB2A4E21255FF200AEFBA2 /* Operations */,
+				30BB2A632125C51700AEFBA2 /* Extensions */,
 			);
 			name = "swift-avr";
 			path = "Sources/swift-avr";
@@ -265,10 +285,14 @@
 			buildActionMask = 0;
 			files = (
 				30BB2A5521256C3200AEFBA2 /* main.swift in Sources */,
+				30BB2A622125C4FA00AEFBA2 /* FixedWidthInteger+Hex.swift in Sources */,
+				30BB2A652125CE3400AEFBA2 /* AssemblyInstruction.swift in Sources */,
 				40B61207212568240096BB1A /* FixedWidthInteger+Bitmask.swift in Sources */,
 				30BB2A4921255F2A00AEFBA2 /* VirtualCPU.swift in Sources */,
+				30BB2A5E2125BB4D00AEFBA2 /* JMP.swift in Sources */,
 				30BB2A5C21258C3900AEFBA2 /* ProgramMemory.swift in Sources */,
 				30BB2A5A21256F3800AEFBA2 /* ADD.swift in Sources */,
+				30BB2A602125BC0A00AEFBA2 /* RJMP.swift in Sources */,
 				30BB2A4D21255FEB00AEFBA2 /* OperationFactory.swift in Sources */,
 				30BB2A5721256CCE00AEFBA2 /* OperationCode.swift in Sources */,
 			);

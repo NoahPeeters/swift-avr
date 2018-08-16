@@ -22,7 +22,8 @@ public class ProgramMemory {
         let upper = Word(read(byteAt: index))
         let lower = Word(read(byteAt: index + 1))
 
-        return (upper << 8) + lower
+        // Interpret as little endian byte order
+        return (lower << 8) + upper
     }
 
     public func read(doubleWordAt index: Int) -> DoubleWord {
