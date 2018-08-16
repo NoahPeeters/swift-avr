@@ -12,7 +12,7 @@ final class swift_avrTests: XCTestCase {
             return
         }
 
-        let fooBinary = productsDirectory.appendingPathComponent("swift_avr")
+        let fooBinary = productsDirectory.appendingPathComponent("swift-avr")
 
         let process = Process()
         process.executableURL = fooBinary
