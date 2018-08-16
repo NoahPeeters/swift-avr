@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		40B61207212568240096BB1A /* FixedWidthInteger+Bitmask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */; };
 		OBJ_22 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Bitmask.swift"; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* swift_avrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_avrTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* main.swift */,
+				40B61206212568240096BB1A /* FixedWidthInteger+Bitmask.swift */,
 			);
 			name = "swift-avr";
 			path = "Sources/swift-avr";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				40B61207212568240096BB1A /* FixedWidthInteger+Bitmask.swift in Sources */,
 				OBJ_22 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
