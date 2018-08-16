@@ -1,0 +1,13 @@
+enabled_rules:
+  - explicit_init
+  - closure_end_indentation
+  - conditional_returns_on_newline
+  - discouraged_optional_boolean
+  - empty_count
+  - empty_string
+  - explicit_enum_raw_value
+  - fallthrough
+  - implicit_return
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - explicit_acl	

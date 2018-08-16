@@ -1,8 +1,8 @@
 import XCTest
 import class Foundation.Bundle
 
-final class swift_avrTests: XCTestCase {
-    func testExample() throws {
+internal final class SwiftAVRTests: XCTestCase {
+    public func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
@@ -30,7 +30,7 @@ final class swift_avrTests: XCTestCase {
     }
 
     /// Returns path to the built products directory.
-    var productsDirectory: URL {
+    private var productsDirectory: URL {
       #if os(macOS)
         for bundle in Bundle.allBundles where bundle.bundlePath.hasSuffix(".xctest") {
             return bundle.bundleURL.deletingLastPathComponent()
@@ -41,7 +41,7 @@ final class swift_avrTests: XCTestCase {
       #endif
     }
 
-    static var allTests = [
-        ("testExample", testExample),
+    public static var allTests = [
+        ("testExample", testExample)
     ]
 }
