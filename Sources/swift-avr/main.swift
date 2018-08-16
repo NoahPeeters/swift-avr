@@ -1,4 +1,7 @@
-private let memory = ProgramMemory(memoryContent: [0, 0, 0])
+import Foundation
+
+private let url = URL(fileURLWithPath: CommandLine.arguments[1])
+private let memory = try ProgramMemory(contentOfHexFileAt: url)
 private let cpu = VirtualCPU(memory: memory)
 private let opCodeFactory = SingleBitWidthOperationFactory<UInt16>()
 
