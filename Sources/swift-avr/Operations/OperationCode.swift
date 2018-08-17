@@ -28,3 +28,15 @@ public class OpCodeType<BitWidth: FixedWidthInteger> {
         return AssemblyInstruction(operationCode: operation.hex(), name: "", parameters: [])
     }
 }
+
+extension OpCodeType where BitWidth == Word {
+    public func getDefaultParameterAddresses(fromOperation operation: Word) -> (destination: Int, source: Int) {
+        return (destination: Int(operation.getValue(withBitmask: 0b0000_0001_1111_0000)),
+                source:      Int(operation.getValue(withBitmask: 0b0000_0010_0000_1111)))
+    }
+
+    public func getDefaultAssemblyParameters(fromOperation operation: Word) -> [String] {
+        let (destination, source) = getDefaultParameterAddresses(fromOperation: operation)
+        return ["r\(destination)", "r\(source)"]
+    }
+}

@@ -7,9 +7,9 @@
 
 import Foundation
 
-public class ADD: OpCodeType<Word> {
+public class EOR: OpCodeType<Word> {
     public init() {
-        super.init(identifier: 0b0000_1100_0000_0000,
+        super.init(identifier: 0b0010_0100_0000_0000,
                    opcBitmask: 0b1111_1100_0000_0000)
     }
 
@@ -21,26 +21,22 @@ public class ADD: OpCodeType<Word> {
         let valueA = cpu.read(registerIndex: destination)
         let valueB = cpu.read(registerIndex: source)
 
-        // Add the values together
-        let (sum, carry) = valueA.addingReportingOverflow(valueB)
-        let (_, halfCarry) = (valueA << 4).addingReportingOverflow(valueB << 4)
-        let (_, overflowIndicator) = (valueA << 1).addingReportingOverflow(valueB << 1)
+        // XOR the values
+        let result = valueA ^ valueB
 
         // Set status flags
-        cpu.write(statusRegister: .carryFlag, value: carry)
-        cpu.write(statusRegister: .zeroFlag, value: sum == 0)
-        cpu.write(statusRegister: .negativeFlag, value: (sum >> 7) == 1)
-        cpu.write(statusRegister: .twosComplementOverflowIndicator, value: overflowIndicator)
-        cpu.write(statusRegister: .halfCarryFlag, value: halfCarry)
+        cpu.write(statusRegister: .twosComplementOverflowIndicator, value: false)
+        cpu.write(statusRegister: .zeroFlag, value: result == 0)
+        cpu.write(statusRegister: .negativeFlag, value: (result >> 7) == 1)
 
         // Write the result
-        cpu.write(registerIndex: destination, value: sum)
+        cpu.write(registerIndex: destination, value: result)
     }
 
     public override func generateAssembly(fromOperation operation: Word) -> AssemblyInstruction {
         let parameters = getDefaultAssemblyParameters(fromOperation: operation)
         return AssemblyInstruction(operationCode: operation.paddedHex(),
-                                   name: "ADD",
+                                   name: "EOR",
                                    parameters: parameters)
     }
 }

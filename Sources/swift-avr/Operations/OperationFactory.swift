@@ -51,31 +51,36 @@ public class OperationFactory {
         doubleWordFactory.register(operation: doubleWordOperation)
     }
 
-    public func scheduleExecution(inMemory memory: ProgramMemory, atLocation address: Int)
-        -> (operationLength: Int, executeOperation: (VirtualCPU) -> Void, assemblyFetcher: () -> AssemblyInstruction)? {
-
-            let wordOpCode = memory.read(wordAt: address)
-            if let wordOperation = wordFactory.matchingOpCodeType(forOperation: wordOpCode) {
-                let executor = { cpu in
+    public func scheduleExecution(inMemory memory: ProgramMemory, atLocation address: Int) -> ScheduledExecution? {
+        let wordOpCode = memory.read(wordAt: address)
+        if let wordOperation = wordFactory.matchingOpCodeType(forOperation: wordOpCode) {
+            return ScheduledExecution(
+                operationLength: 1,
+                executionOperation: { cpu in
                     wordOperation.execute(onCPU: cpu, operation: wordOpCode)
-                }
+                },
+                assemblyFetcher: {
+                    wordOperation.generateAssembly(fromOperation: wordOpCode)
+                })
+        }
 
-                let assemblyFetcher = { wordOperation.generateAssembly(fromOperation: wordOpCode) }
-
-                return (2, executor, assemblyFetcher)
-            }
-
-            let doubleWordOpCode = memory.read(doubleWordAt: address)
-            if let doubleWordOperation = doubleWordFactory.matchingOpCodeType(forOperation: doubleWordOpCode) {
-                let executor = { cpu in
+        let doubleWordOpCode = memory.read(doubleWordAt: address)
+        if let doubleWordOperation = doubleWordFactory.matchingOpCodeType(forOperation: doubleWordOpCode) {
+            return ScheduledExecution(
+                operationLength: 2,
+                executionOperation: { cpu in
                     doubleWordOperation.execute(onCPU: cpu, operation: doubleWordOpCode)
-                }
+                }, assemblyFetcher: {
+                    doubleWordOperation.generateAssembly(fromOperation: doubleWordOpCode)
+                })
+        }
 
-                let assemblyFetcher = { doubleWordOperation.generateAssembly(fromOperation: doubleWordOpCode) }
-
-                return (4, executor, assemblyFetcher)
-            }
-
-            return nil
+        return nil
     }
+}
+
+public struct ScheduledExecution {
+    public let operationLength: Int
+    public let executionOperation: (VirtualCPU) -> Void
+    public let assemblyFetcher: () -> AssemblyInstruction
 }

@@ -62,6 +62,12 @@
             ReferencedContainer = "container:swift-avr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/themegatb/Documents/Arduino/sketch_aug16a/sketch_aug16a.ino.eightanaloginputs.hex"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

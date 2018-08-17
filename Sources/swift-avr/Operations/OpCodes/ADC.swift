@@ -7,10 +7,18 @@
 
 import Foundation
 
-public class ADD: OpCodeType<Word> {
+public class ADC: OpCodeType<Word> {
     public init() {
-        super.init(identifier: 0b0000_1100_0000_0000,
+        super.init(identifier: 0b0001_1100_0000_0000,
                    opcBitmask: 0b1111_1100_0000_0000)
+    }
+
+    private func tripleAdd<Input: FixedWidthInteger>(_ valueA: Input,
+                                                     _ valueB: Input,
+                                                     _ valueC: Input) -> (sum: Input, carry: Bool) {
+        let (intermediateSum, intermediateCarry) = valueA.addingReportingOverflow(valueB)
+        let (sum, carry) = intermediateSum.addingReportingOverflow(valueC)
+        return (sum, carry || intermediateCarry)
     }
 
     public override func execute(onCPU cpu: VirtualCPU, operation: Word) {
@@ -18,13 +26,15 @@ public class ADD: OpCodeType<Word> {
         let (destination, source) = getDefaultParameterAddresses(fromOperation: operation)
 
         // Read the registers
+        let carryFlag = cpu.read(statusRegister: .carryFlag)
         let valueA = cpu.read(registerIndex: destination)
         let valueB = cpu.read(registerIndex: source)
+        let valueC: Byte = carryFlag ? 1 : 0
 
         // Add the values together
-        let (sum, carry) = valueA.addingReportingOverflow(valueB)
-        let (_, halfCarry) = (valueA << 4).addingReportingOverflow(valueB << 4)
-        let (_, overflowIndicator) = (valueA << 1).addingReportingOverflow(valueB << 1)
+        let (sum, carry) = tripleAdd(valueA, valueB, valueC)
+        let (_, halfCarry) = tripleAdd(valueA << 4, valueB << 4, valueC << 4)
+        let (_, overflowIndicator) = tripleAdd(valueA << 1, valueB << 1, valueC << 1)
 
         // Set status flags
         cpu.write(statusRegister: .carryFlag, value: carry)
@@ -40,7 +50,7 @@ public class ADD: OpCodeType<Word> {
     public override func generateAssembly(fromOperation operation: Word) -> AssemblyInstruction {
         let parameters = getDefaultAssemblyParameters(fromOperation: operation)
         return AssemblyInstruction(operationCode: operation.paddedHex(),
-                                   name: "ADD",
+                                   name: "ADC",
                                    parameters: parameters)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  JMP.swift
+//  CALL.swift
 //  swift-avr
 //
 //  Created by Til Blechschmidt on 16.08.18.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-public class JMP: OpCodeType<DoubleWord> {
+public class CALL: OpCodeType<DoubleWord> {
     public init() {
-        super.init(identifier: 0b1001_0100_0000_1100_0000_0000_0000_0000,
+        super.init(identifier: 0b1001_0100_0000_1110_0000_0000_0000_0000,
                    opcBitmask: 0b1111_1110_0000_1110_0000_0000_0000_0000)
     }
 
@@ -18,13 +18,17 @@ public class JMP: OpCodeType<DoubleWord> {
     }
 
     public override func execute(onCPU cpu: VirtualCPU, operation: DoubleWord) {
-        cpu.programCounter = getTargetAddress(fromOperation: operation)
+        let target = getTargetAddress(fromOperation: operation)
+
+        cpu.pushOntoStack(Byte(cpu.programCounter))
+        cpu.pushOntoStack(Byte(cpu.programCounter >> 8))
+        cpu.programCounter = target
     }
 
     public override func generateAssembly(fromOperation operation: DoubleWord) -> AssemblyInstruction {
         let target = getTargetAddress(fromOperation: operation) * 2
         return AssemblyInstruction(operationCode: operation.paddedHex(),
-                                   name: "JMP",
+                                   name: "CALL",
                                    parameters: [target.hex()])
     }
 }

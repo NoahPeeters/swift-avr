@@ -14,7 +14,10 @@ public class RJMP: OpCodeType<Word> {
     }
 
     private func getTargetAddress(fromOperation operation: Word) -> Int {
-        return Int(Int16(bitPattern: operation.getValue(withBitmask: 0b0000_1111_1111_1111)))
+        let int12TwoComplement = operation.getValue(withBitmask: 0b0000_1111_1111_1111)
+        let int16TwoComplement = int12TwoComplement.twoComplement(bitWidth: 12)
+
+        return Int(int16TwoComplement)
     }
 
     public override func execute(onCPU cpu: VirtualCPU, operation: Word) {
@@ -22,9 +25,9 @@ public class RJMP: OpCodeType<Word> {
     }
 
     public override func generateAssembly(fromOperation operation: Word) -> AssemblyInstruction {
-        let target = getTargetAddress(fromOperation: operation)
+        let target = getTargetAddress(fromOperation: operation) * 2
         return AssemblyInstruction(operationCode: operation.paddedHex(),
                                    name: "RJMP",
-                                   parameters: [target.hex()])
+                                   parameters: [String(target)])
     }
 }

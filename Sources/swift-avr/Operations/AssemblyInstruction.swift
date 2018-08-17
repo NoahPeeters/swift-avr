@@ -14,6 +14,6 @@ public struct AssemblyInstruction {
 
     public var description: String {
         let parameters = self.parameters.joined(separator: ", ")
-        return "\(operationCode)\t\t\(name)\t\(parameters)"
+        return "\(operationCode)\t\t\t\(name)  \t\(parameters)"
     }
 }
