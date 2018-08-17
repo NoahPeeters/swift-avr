@@ -41,6 +41,7 @@ extension OperationFactory {
             RET(),
             RJMP(),
             SBCI(),
+            STX1(),
             SUBI()
         ]
 
