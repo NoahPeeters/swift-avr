@@ -9,6 +9,11 @@ private class PrintDelegate: VirtualCPUDelegate {
 private let printDelegate = PrintDelegate()
 private let operationFactory = OperationFactory()
 
+guard CommandLine.arguments.count >= 2 else {
+    print("Please specify path to executable avr program")
+    exit(0)
+}
+
 private let url = URL(fileURLWithPath: CommandLine.arguments[1])
 private let memory = try ProgramMemory(contentOfHexFileAt: url)
 private let cpu = VirtualCPU(memory: memory, operationFactory: operationFactory)

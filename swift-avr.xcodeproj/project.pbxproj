@@ -117,8 +117,8 @@
 		OBJ_13 /* swift_avrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_avrTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		"swift-avr::swift-avr::Product" /* swift-avr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "swift-avr"; sourceTree = BUILT_PRODUCTS_DIR; };
-		"swift-avr::swift-avrTests::Product" /* swift_avrTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = swift_avrTests.xctest; path = "swift-avrTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		"swift-avr::swift-avr::Product" /* swift-avr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = "swift-avr"; sourceTree = BUILT_PRODUCTS_DIR; };
+		"swift-avr::swift-avrTests::Product" /* swift-avrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = "swift-avrTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,7 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				"swift-avr::swift-avr::Product" /* swift-avr */,
-				"swift-avr::swift-avrTests::Product" /* swift_avrTests.xctest */,
+				"swift-avr::swift-avrTests::Product" /* swift-avrTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -299,7 +299,7 @@
 			);
 			name = "swift-avrTests";
 			productName = swift_avrTests;
-			productReference = "swift-avr::swift-avrTests::Product" /* swift_avrTests.xctest */;
+			productReference = "swift-avr::swift-avrTests::Product" /* swift-avrTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -309,12 +309,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					"swift-avr::swift-avr" = {
+						LastSwiftMigration = 1100;
+					};
+					"swift-avr::swift-avrTests" = {
+						LastSwiftMigration = 1100;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "swift-avr" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = OBJ_5;
@@ -435,7 +444,6 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "swift-avr.xcodeproj/swift_avr_Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -443,7 +451,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = "swift-avr";
 			};
 			name = Debug;
@@ -456,7 +464,6 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "swift-avr.xcodeproj/swift_avr_Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -464,7 +471,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = "swift-avr";
 			};
 			name = Release;
@@ -535,13 +542,12 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "swift-avr.xcodeproj/swift_avrTests_Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = "swift-avrTests";
 			};
 			name = Debug;
@@ -556,13 +562,12 @@
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "swift-avr.xcodeproj/swift_avrTests_Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGET_NAME = "swift-avrTests";
 			};
 			name = Release;
